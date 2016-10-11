@@ -55,16 +55,13 @@ public class PlayerService implements Runnable {
 			int yPos = in.nextInt();
 			String direction = in.next();
 			sendToAllClients("addPlayer " + newPlayerName + " " + xPos + " " +  yPos + " " + direction);
-		} else if(command.equals("getPlayerListAll")) {
-			sendToAllClients("GetPlayerListWhereAreYou");
-		} else if(command.equals("GetPlayerListImAt")) {
-			String playername = in.next();
+		} else if(command.equals("playerMoved")) {
+			String player = in.next();
 			int xPos = in.nextInt();
 			int yPos = in.nextInt();
 			String direction = in.next();
-			int point = in.nextInt();
-			sendToAllClients("GameListPlayer " + playername + " " + xPos + " " + yPos + " " + direction + " " + point);
-		}
+			sendToAllClients("playerMoves " + player + " " + xPos + " " + yPos + " " + direction);
+		} 
 	}
 	
 	public void sendToSingleSocket(String response) {
